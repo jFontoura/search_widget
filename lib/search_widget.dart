@@ -81,11 +81,13 @@ class MySingleChoiceSearchState<T> extends State<SearchWidget<T>> {
     _focusNode.addListener(() {
       if (!_focusNode.hasFocus) {
         _controller.clear();
+        listContainerHeight = 0;
         if (overlayEntry != null) {
           overlayEntry.remove();
         }
         overlayEntry = null;
       } else {
+        listContainerHeight = MediaQuery.of(context).size.height / 3;
         _tempList
           ..clear()
           ..addAll(_list);
